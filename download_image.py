@@ -9,12 +9,12 @@ def crawl_image_from_url(url, filename):
 
     #print("crawling " + url + " ...")
     try: 
-        f = open("./images/" + filename, 'wb')
+        f = open("/tmp/" + filename, 'wb')
         f.write(urllib.urlopen(url).read())
         f.close()
-        #os.system("/opt/hadoop/hadoop/bin/hdfs dfs -put /tmp/" + filename + " /user/hduser/images/" + filename)
+        os.system("/opt/hadoop/hadoop/bin/hdfs dfs -put /tmp/" + filename + " /user/hduser/images/" + filename)
     except Exception as e:
-        return "Error: " + url + " " + e.strerror
+        return "Error: " + url
 
     return url
 
